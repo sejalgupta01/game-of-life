@@ -15,6 +15,8 @@ function printGrid(grid){
 
 function getNextGen(grid){
     newGrid = JSON.parse(JSON.stringify(grid));
+    var gridLength = grid[0].length;
+    var gridBreadth = grid.length;
     for (var i=0; i<gridBreadth; i++){
         for (var j=0; j<gridLength; j++){
             var neighbours = grid[mod(i-1, gridBreadth)][mod(j-1, gridLength)] + grid[mod(i-1, gridBreadth)][mod(j+1, gridLength)];
@@ -33,16 +35,4 @@ function getNextGen(grid){
         }
     }
     return newGrid;
-}
-
-var gridLength = 5;
-var gridBreadth = 5;
-var grid = [[1,0,1,1,0], [0,0,0,1,1], [1,1,1,0,0], [0,0,0,0,1], [0,0,0,0,0]];
-var numberOfGens = 5;
-
-printGrid(grid);
-
-for(var i=0; i<numberOfGens; i++){
-    grid = getNextGen(grid);
-    printGrid(grid);
 }
